@@ -1,6 +1,6 @@
 === Popup Builder ===
 Contributors: Sygnoos 
-Tags: popup,popup promote,promotional popup,popup ads
+Tags: popup,popup promote,promotional popup,popup ads, popup advertising
 Requires at least: 3.8
 Tested up to: 4.2.2
 Stable tag: 4.2.2
