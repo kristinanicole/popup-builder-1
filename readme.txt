@@ -1,9 +1,9 @@
 === Popup Builder ===
 Contributors: Sygnoos 
-Tags: popup,popup promote,promotional popup,popup ads, popup advertising
+Tags: popup,popup promote,promotional popup,popup ads, popup advertising, popup box, popup form, popup message, popup window, popups, wordpress popup
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 4.2.2
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,4 +58,8 @@ Go to the Popup Builder settings and set your desired options.
 4.  Showing a popup
 
 == Changelog ==
-Initial upload 1.0.0
+* Version 1.1
+
+	Bug fixes
+
+* Initial upload 1.0.0

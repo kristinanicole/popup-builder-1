@@ -31,8 +31,11 @@ function sg_popup_scripts($hook) {
 	}
 	wp_register_script('javascript', SG_APP_POPUP_URL . '/javascript/sg_popup_backend.js', array('jquery'));
 	wp_register_script('colorbox', SG_APP_POPUP_URL . '/javascript/jquery.colorbox-min.js', array('jquery'));
+	wp_register_script('proo', SG_APP_POPUP_URL . '/javascript/sg_popup_pro.js');
+	wp_enqueue_script('proo');
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('colorbox');
 	wp_enqueue_script('javascript');
 }
 add_action('admin_enqueue_scripts', 'sg_popup_scripts');
+

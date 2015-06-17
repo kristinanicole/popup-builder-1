@@ -17,9 +17,17 @@
 	$entries = $wpdb->get_results($st);
 ?>
 <div class="wrap">
-	<h1>Popups</h1>
-	<div class="creteLinkWrapper">
-		<a id='linkCreate' href='<?php echo admin_url();?>admin.php?page=create-popup'>Create new</a>
+	<div class="headersWrapper">
+		<h1>Popups</h1>
+		<div class="creteLinkWrapper">
+		
+			<a id='linkCreate' href='<?php echo admin_url();?>admin.php?page=create-popup'>Create new</a>
+		</div>
+		<?php 
+			if(!SG_POPUP_PRO) { ?>
+				<input type="button" class="mainUpdateToPro" value="Upgrade to PRO version" onclick="window.open('<?php echo SG_POPUP_PRO_URL;?>')">
+			<?php }
+		?>
 	</div>
 	<table class="widefat">
 		<thead>
