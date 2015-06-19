@@ -16,7 +16,7 @@ function sg_popup_admin_scripts($hook) {
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('javascript');
     }
-	else if('popup-builder_page_popups' == $hook){
+	else if('toplevel_page_PopupBuilder' == $hook){
 		wp_register_script('javascript', SG_APP_POPUP_URL . '/javascript/sg_popup_backend.js', array('jquery'));
 		wp_enqueue_script('javascript');
 		wp_enqueue_script('jquery');

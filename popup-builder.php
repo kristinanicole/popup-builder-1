@@ -3,7 +3,7 @@
  * Plugin Name: Popup Builder
  * Plugin URI: http://sygnoos.com
  * Description: Create and manage powerful promotion popups for your WordPress blog or website. It's completely free and all features are available.
- * Version: 1.1
+ * Version: 1.1.1
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
