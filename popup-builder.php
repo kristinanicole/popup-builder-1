@@ -3,7 +3,7 @@
  * Plugin Name: Popup Builder
  * Plugin URI: http://sygnoos.com
  * Description: Create and manage powerful promotion popups for your WordPress blog or website. It's completely free and all features are available.
- * Version: 1.1.1
+ * Version: 1.1
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
@@ -57,12 +57,12 @@ function sg_popup_POD_deactivate(){
 add_action("admin_menu","addMenu");
 function addMenu()
 {
-	add_menu_page("Theme page title", "Popup Builder", "","Popup Builder","Menu","dashicons-welcome-widgets-menus");
-	add_submenu_page("Popup Builder", "Popup Builder", "Popups", 'manage_options', "popups", "Menu");
-	add_submenu_page("Popup Builder", "Edit popup", "Create new", 'manage_options', "create-popup", "createPopup");	// it's first sub menu  //example-option-1
+	add_menu_page("Popup Builder", "Popup Builder", "manage_options","PopupBuilder","sgPopupMenu","dashicons-welcome-widgets-menus");
+	add_submenu_page("PopupBuilder", "Popups", "Popups", 'manage_options', "PopupBuilder", "sgPopupMenu");
+	add_submenu_page("PopupBuilder", "Edit popup", "Create new", 'manage_options', "create-popup", "createPopup");
 }
 
-function Menu()
+function sgPopupMenu()
 {
   require_once( SG_APP_POPUP_FILES . '/sg_popup_main.php');
 }
@@ -112,6 +112,9 @@ function sg_popup_dataAdmin() {
 		include_once( SG_APP_POPUP_FILES . '/sg_popup_params_pro.php');
 		$shortCode=PopupPro::shortcode($result->shortCode);
 	}
+	else{
+		$shortCode = 1;
+	}
 	
 	$result->html = str_replace("'", "\\'", $result->html);
 	$html = wp_kses_post(json_encode($result->html));
@@ -140,12 +143,12 @@ function sg_popup_dataAdmin() {
 	$initialHeight = esc_html($jsonData->initialHeight);
 	
 	echo "<script type=\"text/javascript\">
-		shortCode = $shortCode.replace(/\'/g, /\\\'/);
+	
 		var SG_POPUP_VARS = {
 			title:'$title',
 			id:'$id',
 			html:'$html',
-			shortCode: shortCode,
+			shortCode: '$shortCode',
 			iframe: '$iframe',
 			image:'$image',
 			type:'$type',
