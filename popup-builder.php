@@ -83,16 +83,6 @@ function getPopupDetails($page , $popup) {
 	return $result;
 }
 
-// Register Script
-if(SG_POPUP_PRO){
-	
-	function aaa($content) {
-		
-	}
-
-	
-}
-
 function sg_popup_dataAdmin() {
 	global $wpdb;
 	global $post;
