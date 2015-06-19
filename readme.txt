@@ -31,6 +31,7 @@ Create and manage powerful promotion popups for your WordPress blog or website. 
 *   Show popup only when user is scrolling
 *   Show popup once per visitor
 
+<a href="http://sygnoos.com/wordpress-popup/" target="_blank">Get Popup Builder PRO package</a>
 <div>
   Customizing the look and feel of the popup is as important as the content itself. That's why Promotional Popup gives you the ability tu customize the timings, effects, position and size of the popup to your needs.
 </div>
