@@ -36,7 +36,7 @@ Popups are a good marketing tool, they're impressively high converting. A web pa
 
 <a href="http://sygnoos.com/wordpress-popup/" target="_blank">Get Popup Builder PRO package</a>
 <div>
-  Customizing the look and feel of the popup is as important as the content itself. That's why Promotional Popup gives you the ability tu customize the timings, effects, position and size of the popup to your needs.
+  Customizing the look and feel of the popup is as important as the content itself. That's why Popup Builder gives you the ability tu customize the timings, effects, position and size of the popup to your needs.
 </div>
 
 <div>
@@ -45,7 +45,7 @@ Popups are a good marketing tool, they're impressively high converting. A web pa
   </div>
   
   <div>
-    If you think that you found a bug in our Promotional Popup plugin or have any questions, please feel free to contact us at <a href="mailto:wp-popup@sygnoos.com" title="wp-popup@sygnoos.com"><strong>wp-popup@sygnoos.com</strong></a>.
+    If you think that you found a bug in our Popup Builder plugin or have any questions, please feel free to contact us at <a href="mailto:wp-popup@sygnoos.com" title="wp-popup@sygnoos.com"><strong>wp-popup@sygnoos.com</strong></a>.
   </div>
 </div>
 
