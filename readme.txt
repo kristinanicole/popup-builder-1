@@ -1,35 +1,38 @@
 === Popup Builder ===
+Plugin Name: Popup Builder
 Contributors: Sygnoos 
-Tags: popup,popup promote,promotional popup,popup ads, popup advertising, popup box, popup form, popup message, popup window, popups, wordpress popup, simple popup, modal window, responsive popup
+Tags: popup,popup promote,promotional popup,popup ads, popup advertising, popup box, popup form, popup message, popup window, popups, wordpress popup, simple popup, modal window, responsive popup, fancybox, fancy popup, lightbox
 Requires at least: 3.8
 Tested up to: 4.2.2
 Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create and manage powerful promotion popups for your WordPress blog or website. It's completely free and all features are available.
+Create powerful popups for promotion. Manage popup dimensions, effects, themes and more.
 
 == Description ==
 
-Create and manage powerful promotion popups for your WordPress blog or website. Powerful, and yet, easy to use popup plugin that will help you to grab your visitor's attention to introduce him offers, discounts or other kind of promotional notices. It's completely free and all features are available.
+Create and manage powerful promotion popups for your WordPress blog or website. Powerful, and yet, easy to use popup plugin that will help you to grab your visitor's attention to introduce him offers, discounts or other kind of promotional notices.
+
+Popups are a good marketing tool, they're impressively high converting. A web page with a popup typically sees more conversions than the same page without a popup. More important, a page with a well designed and thoughtfully implemented popup converts better than one with an ugly popup. With Popup Builder plugin you can customize the popup according to your needs.
 
 **Features:**
 
 *   Create and manage as many popups as you want
-*   Choose whether to show html or a single image
+*   Choose whether to show html popup or a single image
 *   Customize the look and feel of the popup
 *   Set custom animation effects
-*   Customize animation effect
+*   Customize popup animation effect
 *   Choose between several popup themes
 *   Set popup location on the screen
 *   Responsive popup
 
 **PRO features:**
 
-*   Create iframe popup
-*   Create popup from shortcodes of other plugins
-*   Show popup only when user is scrolling
-*   Show popup once per visitor
+*   Create iframe popup - you can set the URL you want to load within an iframe and the popup will load that iframe
+*   Create popup from shortcodes of other plugins - very useful when you want to load another plugin inside your popup
+*   Show popup only when user is scrolling - sometimes you don't want to show the popup right away, it's a good idea to set this option so the popup will be shown to the visitor only when he scrolls
+*   Show popup once per visitor - useful when you don't want to show the popup to the same visitor more than once
 
 <a href="http://sygnoos.com/wordpress-popup/" target="_blank">Get Popup Builder PRO package</a>
 <div>
