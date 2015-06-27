@@ -66,8 +66,10 @@ function sg_popup_callback( $post )
 	<input type="hidden" value="<?php echo $SG_APP_POPUP_URL;?>" id="SG_APP_POPUP_URL">
 <?php
 }
-	add_action('save_post',function($post_id)
+	function slelectPopupSaved($post_id)
 	{
 		update_post_meta($post_id, 'sg_promotional_popup' , $_POST['sg_promotional_popup']);
-	});
+	}
+	add_action('save_post','slelectPopupSaved');
+	
 	

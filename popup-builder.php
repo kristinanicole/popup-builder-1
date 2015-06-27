@@ -3,7 +3,7 @@
  * Plugin Name: Popup Builder
  * Plugin URI: http://sygnoos.com
  * Description: Create powerful popups for promotion. Manage popup dimensions, effects, themes and more.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2

@@ -1,10 +1,10 @@
 === Popup Builder ===
 Plugin Name: Popup Builder
 Contributors: Sygnoos 
-Tags: popup,popup promote,promotional popup,popup ads, popup advertising, popup box, popup form, popup message, popup window, popups, wordpress popup, simple popup, modal window, responsive popup, fancybox, fancy popup, lightbox
+Tags: popup,popup promote,promotional popup,popup ads, popup advertising, popup box, popup form, popup message, popup window, popups, wordpress popup, simple popup, modal window, responsive popup, fancybox, fancy popup, lightbox, automatic popup, custom popup,popup message
 Requires at least: 3.8
 Tested up to: 4.2.2
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,6 +69,10 @@ Go to the Popup Builder settings and set your desired options.
 4.  Showing a popup
 
 == Changelog ==
+* Version 1.1.2
+
+	Bug fixes
+
 * Version 1.1.1
 
 	Bug fixes
