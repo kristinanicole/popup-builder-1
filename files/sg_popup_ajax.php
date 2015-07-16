@@ -8,7 +8,7 @@ function setOptionvalue($optionsKey)
 	{ 
 		if($optionsKey == "sg_popup_html") 
 		{
-			return wp_kses_data($_POST[$optionsKey]);
+			return wp_kses_post($_POST[$optionsKey]);
 		}
 			
 		return sanitize_text_field($_POST[$optionsKey]);	
