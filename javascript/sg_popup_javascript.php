@@ -26,7 +26,7 @@ add_action('admin_enqueue_scripts', 'sg_set_admin_url');
 add_action('admin_enqueue_scripts', 'sg_popup_admin_scripts');
 
 function sg_popup_scripts($hook) {
-	if ($hook != 'post.php') {
+	if ($hook != 'post.php' && $hook != 'post-new.php') {
 		return;
 	}
 	wp_register_script('javascript', SG_APP_POPUP_URL . '/javascript/sg_popup_backend.js', array('jquery'));

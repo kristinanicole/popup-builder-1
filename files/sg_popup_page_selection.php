@@ -52,7 +52,7 @@ function sg_popup_callback( $post )
 		global $post;
 		$page = (int)$post->ID;
 		$popup = "sg_promotional_popup";
-		$sql = $wpdb->prepare("SELECT meta_value  FROM wp_postmeta WHERE post_id = %d AND meta_key =%s",$page,$popup);
+		$sql = $wpdb->prepare("SELECT meta_value  FROM ". $wpdb->prefix ."postmeta WHERE post_id = %d AND meta_key =%s",$page,$popup);
 		$row = $wpdb->get_row($sql);
 		$type = (int)$row->meta_value;
 		$prepare = $wpdb->prepare("SELECT * FROM ". $wpdb->prefix ."sg_promotional_popup WHERE id = %d ",$type);
@@ -66,8 +66,7 @@ function sg_popup_callback( $post )
 	<input type="hidden" value="<?php echo $SG_APP_POPUP_URL;?>" id="SG_APP_POPUP_URL">
 <?php
 }
-	function slelectPopupSaved($post_id)
-	{
+	function slelectPopupSaved($post_id) {
 		update_post_meta($post_id, 'sg_promotional_popup' , $_POST['sg_promotional_popup']);
 	}
 	add_action('save_post','slelectPopupSaved');

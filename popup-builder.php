@@ -3,7 +3,7 @@
  * Plugin Name: Popup Builder
  * Plugin URI: http://sygnoos.com
  * Description: Create powerful popups for promotion. Manage popup dimensions, effects, themes and more.
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
@@ -26,9 +26,31 @@ require_once( SG_APP_POPUP_FILES .'/sg_popup_page_selection.php' );  // include 
 
 
 register_activation_hook(__FILE__, 'sg_popup_activate');
-register_deactivation_hook(__FILE__, 'sg_popup_POD_deactivate');
-function sg_popup_activate(){
+register_uninstall_hook(__FILE__, 'sg_popup_POD_deactivate');
+add_action( 'wpmu_new_blog', 'wporg_wpmu_new_blog', 10, 6 );
+
+function wporg_wpmu_new_blog( $blog_id, $user_id, $domain, $path, $site_id, $meta ) {
 	global $wpdb;
+	$bolgs_id = $blog_id;
+	createTables($bolgs_id);
+}
+
+function sg_popup_activate($network_wide) {
+	global $wpdb;
+	creteTable();
+	if(is_multisite() ) {
+
+		$stites = wp_get_sites();
+		foreach($stites as $site) {
+			$bolgs_id = $site['blog_id'];
+			global $wpdb;
+			createTables($bolgs_id);
+		}
+	}
+}
+function creteTable() {
+	global $wpdb;
+	
 	$sg_popup_base = "CREATE TABLE IF NOT EXISTS  ". $wpdb->prefix ."sg_promotional_popup (
 	  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 	  `content` varchar(255) NOT NULL,
@@ -41,16 +63,43 @@ function sg_popup_activate(){
 	) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
 	$wpdb->query($sg_popup_base);
 }
+function createTables($bolgs_id) {
+	global $wpdb;
+	 $sg_popup_net_base = "CREATE TABLE IF NOT EXISTS  ". $wpdb->prefix.$bolgs_id."_sg_promotional_popup (
+		  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+		  `content` varchar(255) NOT NULL,
+		  `html` text NOT NULL,
+		  `image` varchar(255) NOT NULL,
+		  `iframe` varchar(255) NOT NULL,
+		  `shortCode` varchar(255) NOT NULL,
+		  `options` text NOT NULL,
+		  PRIMARY KEY (`id`)
+		) ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
+		$wpdb->query($sg_popup_net_base);
+}
 
 function sg_popup_POD_deactivate(){
 	global $wpdb;	//required global declaration of WP variable
-	$delete = "DELETE  FROM wp_postmeta WHERE meta_key = 'sg_promotional_popup' ";
+	$delete = "DELETE  FROM ".$wpdb->prefix."postmeta WHERE meta_key = 'sg_promotional_popup' ";
 	$wpdb->query($delete);
 	$table_name = $wpdb->prefix."sg_promotional_popup";
 	$sql = "DROP TABLE ". $table_name;
 	$wpdb->query($sql);
+	if(is_multisite() ) {
+
+		$stites = wp_get_sites();
+		foreach($stites as $site) {
+			$bolgs_id = $site['blog_id'];
+			$table_name = $wpdb->prefix.$bolgs_id."_sg_promotional_popup";
+			$sql = "DROP TABLE ". $table_name;
+			$wpdb->query($sql);
+			$delete = "DELETE  FROM ".$wpdb->prefix.$bolgs_id."_postmeta WHERE meta_key = 'sg_promotional_popup' ";
+			$wpdb->query($delete);
+		}
+	}
 
 }
+
 
 //create action huk for create menu and subMenu in the admin menu
 
@@ -76,7 +125,7 @@ function getPopupDetails($page , $popup) {
 	global $wpdb;
 	global $post;
 
-	$sql = $wpdb->prepare("SELECT meta_value  FROM wp_postmeta WHERE post_id = %d AND meta_key =%s",$page,$popup);
+	$sql = $wpdb->prepare("SELECT meta_value  FROM ". $wpdb->prefix ."postmeta WHERE post_id = %d AND meta_key =%s",$page,$popup);
 	$row = $wpdb->get_row($sql);
 	$type = (int)$row->meta_value;
 	$result = $wpdb->get_row('SELECT * FROM '. $wpdb->prefix .'sg_promotional_popup WHERE id='.$type.'');
