@@ -31,8 +31,12 @@ function sg_popup_scripts($hook) {
 	}
 	wp_register_script('javascript', SG_APP_POPUP_URL . '/javascript/sg_popup_backend.js', array('jquery'));
 	wp_register_script('colorbox', SG_APP_POPUP_URL . '/javascript/jquery.colorbox-min.js', array('jquery'));
-	wp_register_script('proo', SG_APP_POPUP_URL . '/javascript/sg_popup_pro.js');
-	wp_enqueue_script('proo');
+
+	if (SG_POPUP_PRO) {
+		wp_register_script('sgpropopup', SG_APP_POPUP_URL . '/javascript/sg_popup_pro.js');
+		wp_enqueue_script('sgpropopup');
+	}
+
 	wp_enqueue_script('jquery');
 	wp_enqueue_script('colorbox');
 	wp_enqueue_script('javascript');

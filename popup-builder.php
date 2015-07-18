@@ -3,7 +3,7 @@
  * Plugin Name: Popup Builder
  * Plugin URI: http://sygnoos.com
  * Description: Create powerful popups for promotion. Manage popup dimensions, effects, themes and more.
- * Version: 1.1.3
+ * Version: 1.1.4
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
@@ -135,7 +135,7 @@ function getPopupDetails($page , $popup) {
 function sg_popup_dataAdmin() {
 	global $wpdb;
 	global $post;
-	$page = (int)$post->ID;
+	$page = get_queried_object_id();
 	$popup = "sg_promotional_popup";
 	
 	$result = getPopupDetails($page,$popup);
@@ -154,9 +154,8 @@ function sg_popup_dataAdmin() {
 	else{
 		$shortCode = 1;
 	}
-	
-	$result->html = str_replace("'", "\\'", $result->html);
-	$html = wp_kses_post(json_encode($result->html));
+
+	$html = json_encode(wp_kses_post(array("html" => $result->html)));
 	
 	$iframe = wp_kses_post($result->iframe);
 	$image = esc_html($result->image);
@@ -186,7 +185,7 @@ function sg_popup_dataAdmin() {
 		var SG_POPUP_VARS = {
 			title:'$title',
 			id:'$id',
-			html:'$html',
+			html: ".$html.",
 			shortCode: '$shortCode',
 			iframe: '$iframe',
 			image:'$image',
@@ -236,10 +235,10 @@ function sg_popup_enqueueScript()
 {
 	global $wpdb;
 	global $post;
-	$page = (int)$post->ID;
+	$page = get_queried_object_id();
 	$popup = "sg_promotional_popup";
 	
-	$result = getPopupDetails($page,$popup); /// query functions result 
+	$result = getPopupDetails($page,$popup); /// query functions result
 	
 	$jsonData = json_decode($result->options);
 	$id = esc_html($result->id);
