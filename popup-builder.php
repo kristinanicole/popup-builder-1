@@ -302,4 +302,9 @@ function sg_popup_getresults(){
 	exit();
 }
 
+function sg_popup_plugin_loaded() {
+    file_put_contents("sgdebug.txt","Debug\n",FILE_APPEND);
+}
+add_action( 'plugins_loaded', 'sg_popup_plugin_loaded' );
+
 require_once( SG_APP_POPUP_FILES . '/sg_popup_ajax.php');
