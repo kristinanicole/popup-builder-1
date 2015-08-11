@@ -190,10 +190,6 @@
 					if(!SG_POPUP_PRO) { ?>
 						<input class="crudToPro" type="button" value="Upgrade to PRO version" onclick="window.open('<?php echo SG_POPUP_PRO_URL;?>')"><div class="clear"></div>
 					<?php } ?> 
-					<?
-						$cssClass = (!SG_POPUP_PRO)? "margin: 5px 0px 5px 0px;" : '';
-				
-					?>
 					<input type="submit" id="promotionalSaveButton" class="button-primary" value="<?php _e('Save Changes') ?>" style='<?php echo $cssClass;?>' />
 					<img id="createAjaxLoader" src="<?php echo plugins_url('img/wpspin_light.gif', dirname(__FILE__).'../');?>" style="display: none">
 				</p>
