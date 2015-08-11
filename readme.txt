@@ -2,10 +2,10 @@
 Plugin Name: Popup Builder
 Contributors: Sygnoos 
 Donate link: http://sygnoos.com/wordpress-popup/
-Tags: popup,popup promote,promotional popup,popup ads, popup advertising, popup box, popup form, popup message, popup window, popups, wordpress popup, simple popup, modal window, responsive popup, fancybox, fancy popup, lightbox, automatic popup, custom popup,popup message, youtube popup, video popup, iframe popup, vimeo popup, popup contact form, dialog box, fancy box popup, wordpress popup plugin
+Tags: popup,popup promote,promotional popup,popup ads, popup advertising, popup box, popup form, popup message, popup window, popups, wordpress popup, simple popup, modal window, responsive popup, fancybox, fancy popup, lightbox, automatic popup, custom popup,popup message, youtube popup, video popup, iframe popup, vimeo popup, popup contact form, dialog box, fancy box popup, wordpress popup plugin, lightbox popup
 Requires at least: 3.8
-Tested up to: 4.2.3
-Stable tag: 1.1.4
+Tested up to: 4.2.4
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -74,6 +74,10 @@ Go to the Popup Builder settings and set your desired options.
 4.  Showing a popup
 
 == Changelog ==
+
+* Version 2.0
+
+	Major release of Popup Builder v2.0
 
 * Version 1.1.4
 

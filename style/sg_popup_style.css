@@ -1,4 +1,35 @@
+/*new styles*/
+#general .postbox-container,#effect .postbox-container, #dimentions .postbox-container,#options .postbox-container,#sepectialOptons .postbox-container,#proOptions .postbox-container{
+	width: 100%;
+}
+.headersWrapper h2{
+	padding-top: 0px;
+}
+h3.hndle .ui-sortable-handle .generalTitle {
+	cursor: pointer;
+} 
+.createPopupLink {
+	cursor: pointer;
+}
+.hedlinePadding {
+	padding: 18px 0px;
+}
+/*ned new styyle*/
+
 /******* coomon *******/
+.generalWrapper {
+	margin-right: 2.5%;
+}
+.sameImageStyle {
+	color: #3879D9;
+	padding-top: 7px;
+}
+.improveOptionsstyle {
+	margin-left: 0px;
+}
+.advancedOptionsContent .sameImageStyle {
+	margin-left: 16px;
+}
 #displayNone {
 	display: none;
 }
@@ -68,13 +99,7 @@
 	margin: 18px;
 	display: inline-block;
 }
-#dimentionsTitle > img,#optionsTitle > img,#effectsTitle > img,#generalTitle > img {
-	position: absolute;
-	left: 90%;
-	top: 9%;
-	transform: rotate(-180deg);
-	
-}
+
 .rightArrow{
 	 transform: rotate(0deg);
 }
@@ -82,19 +107,20 @@
 	 transform: rotate(-180deg);
 }
  
-.dimensionsContent, .generalContent, .effectsContent, .optionsContent {
+.dimensionsContent, .generalContent, .effectsContent, .optionsContent, .advancedOptionsContent {
   padding: 10px 20px;
 }
 
-
+#titlewrap {
+}
 .clear{
 	clear: both;
 }
 /******* coomon end *******/
 /******* admin page ******/
+
 .headersWrapper {
 	width: 100%;
-	height: 90px;
 	position: relative;
 }
 .mainUpdateToPro {
@@ -116,7 +142,6 @@
 	cursor: pointer;
 	margin-right: 2.5%;
 }
-
 .effectsContent .samefontStyle{
 	max-width: 131px;
 	
@@ -125,22 +150,13 @@
 	margin-left: 10px;
 }
 
-#promotionalSaveButton:before{
-	clear: both;
-}
-
 #promotionalSaveButton{
 	float: right;
 	margin-right: 2.5%;
 }
-#linkCreate {
-	text-decoration: none;
-	display: block;
-	cursor: pointer;
-	font: 13px Arial;
-}
-#linkCreate :hover{
-	display: block;
+.improve-icon {
+	padding-right: 2px;
+	padding-top: 3px;
 }
 .creteLinkWrapper{
 	display: inline-block;
@@ -152,12 +168,6 @@
 	display: block;
 	padding: 6px;
 }
-.creteLinkWrapper a:hover{
-	background-color: #46ADD0;
-	color: white;
-	cursor: pointer;
-}
-
 
 #disine tr:nth-child(even){
 	background-color: #F9F9F9;
@@ -201,7 +211,43 @@ span.phpErrorStyle{
 #gifLoader {
 	margin-left: 5px;
 }
+.popupsWrapper {
+	margin: 26px 0px 0px 0px;
+}
 /******* admin page end ******/
+/****** admin Create page ****/
+
+.popupsDiv {
+	width: 200px;
+	height: 150px;
+	border: 1px solid #CCCCCC;
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	background-color: #DEDEDE;
+	background-size: 100%;
+	transition: all .1s ease-in-out;
+}
+.popupsDiv:hover {
+	background-color: #CDCDCD;
+	transform: scale(1.05);
+}
+.htmlPopup {
+	background-image: url(../img/HTML-Button.png);
+}
+.imagePopup {
+	background-image: url(../img/Images-Button.png);
+}
+.iframePopup {
+	background-image: url(../img/iframePopup.png);
+}
+.shortcodePopup {
+	background-image: url(../img/ShortcodePopup.png);
+}
+.videoPopup {
+	background-image: url(../img/VideoPopup.png);
+}
+/****** end create page *****/
 /******* general ******/
 #createAjaxLoader {
 	float: right;
@@ -216,8 +262,21 @@ span.phpErrorStyle{
 
 	margin: 10px auto;
 }
-
-
+.optionsH1 {
+	font: 16px Arial,sans-serif;
+	text-align: center;
+}
+.sgOptionsContent {
+	width: 48%;
+	margin: 0 auto;
+	display: block;
+}
+.optinonsInput {
+	width: 100%;
+}
+.htmlType {
+	margin: 15px 0 0 0;
+}
 .contentTypeMain{
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
@@ -253,64 +312,16 @@ span.phpErrorStyle{
 }
 
 /*----- Tabs -----*/
-.tabs {
-    width:100%;
-    display:inline-block;
-}
 
 /*----- Tab Links -----*/
 /* Clearfix */
-.tab-links:after {
-	display:block;
-	clear:both;
-	content:'';
-}
 
-.tab-links li {
-	margin:0px 5px;
-	float:left;
-	list-style:none;
-}
 
-.tab-links a {
-	padding:9px 15px;
-	display:inline-block;
-	border-radius:3px 3px 0px 0px;
-	background:#7FB5DA;
-	font-size:13px;
-	font-weight:600;
-	color:#4c4c4c;
-	text-decoration: none;
-	transition:all linear 0.15s;
-}
 
-.tab-links a:hover {
-		background:#a7cce5;
-		text-decoration:none;
-}
-
-li.active a, li.active a:hover {
-	background:#fff;
-	color:#4c4c4c;
-}
 
 /*----- Content of Tabs -----*/
-.tab-content {
-	min-height: 275px;
-	margin-top: -12px;
-	padding:15px;
-	border-radius:3px;
-	box-shadow: 0px 0px 3px rgba(0,0,0,0.15);
-	background:#fff;
-}
 
-.tab {
-	display:none;
-}
 
-.tab.active {
-	display:block;
-}
 input[id="upload_image_button"]{
 	   width: 37%;	
 }
@@ -347,15 +358,7 @@ input[id="upload_image_button"]{
 	margin-top: -3px;
 	margin-left: 20px;
 }
-.htmlType  .wp-editor-tabs {
-	float: right;
-	margin-right: 6%;
-}
-.htmlType  #insert-media-button {
-	position: relative;
-	top:3px;
-}
-.iframetype h1 {
+frametype h1 {
 	text-align: center;
 	padding-bottom: 34px;
 	font: 16px arial;
@@ -373,7 +376,7 @@ input[id="upload_image_button"]{
 	width: 240px;
 	height: 130px;
 	margin-top: 1px;
-	margin-left: 6%;
+	margin-left: 15%;
 	display: block;
 	position: absolute;
 	z-index: 9999999999999999;
@@ -423,8 +426,11 @@ input[name="theme"]{
 	margin-top: 13px;
 }
 #themeSPan{	
-	margin-top: 24px;
+	margin-top: 32px;
 }
+#themeSPan.createDescribe {
+	margin-top: 10px;
+} 
 /*effects*/
 .effects span{
 	margin-top: 13px;
@@ -446,7 +452,8 @@ input[name="theme"]{
 	width: 60.0%;
 }
 #themeSPan {
-	width: 119px;
+	width: 138px;
+	margin-top: 0px;
 }
 
 
@@ -486,18 +493,40 @@ input[name="theme"]{
 .options{
 	  margin-top: 13px;
 }
-.optionsContent .createDescribe {
+.optionsContent .createDescribe, .advancedOptionsContent .createDescribe {
 	width: 241px;
 }
 .optionsContent .sameWidthinputs {
 	margin-right: 20px;
 }
-.optionsContent{
+.optionsContent ,.advancedOptionsContent, .specialOptionsContent {
 	background-color: white;
 	position: relative;
-	padding: 10px 20px 0px 20px;
+	padding: 10px 20px 10px 20px;
 }
-
+.bootstrap-tagsinput .tag {
+	background-color: #5BC0DE;
+	padding: 0 3px 2px 3px;
+}
+.bootstrap-tagsinput > span {
+	display: inline-block;
+}
+.optionsCountry {
+	margin-left: -1px;
+}
+.autoClosePopupContent {
+	width: 100%;
+	display: none;
+}
+.popupTimer {
+	width: 30px;
+}
+.optionStyle {
+	font: 13px Arial, sans-serif;
+	padding-left: 2px;
+	display: inline-block;
+	margin-bottom: 8px;
+}
 .range-bar {
   background-color: #a9acb1;
   border-radius: 15px;
@@ -557,7 +586,8 @@ input[name="theme"]{
   font-size: 0.8em;
   height: 23px;
   right: -41px;
-  padding-top: 2px;
+  box-sizing: border-box;
+  padding-top: 6px;
   position: absolute;
   text-align: center;
   top: -10px;
@@ -566,13 +596,51 @@ input[name="theme"]{
   -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
 }
-
+#colorPiccer {
+	display: inline-block;
+}
+#colorPiccer > .wp-picker-container .wp-color-result {
+	top:12px;
+}
+.wp-picker-open+.wp-picker-input-wrap {
+	float: right;
+	margin-top: 10px;
+}
+.countrisConfigDiv {
+	width: 100%;
+	max-height: 150px;
+	display: none;
+}
+.scrollingContent {
+	width: 100%;
+	display: none;
+}
+.beforeScrolingPrsent {
+	width: 30px;
+}
+.scrollPresentSpan {
+	padding-left: 4px;
+}
+.countrisConfigDivCountris {
+	display: inline-block;
+	width: 239px;
+}
+.autoCloseTimeContent {
+	display: none;
+	width: 100%;
+}
+.popupClosingTimer {
+	width: 37px;
+}
 .fixedWrapper {
 	max-width: 248px;
 	width: 40%;
 	height: 191px;
+	display: inline-block;
+}
+.popopFixeds {
+	width: 100%;
 	display: none;
-	
 }
 .forFixWrapperStyle {
 	width: 241px;
@@ -649,31 +717,30 @@ input[name="theme"]{
 }
 .cereateTitleWrapper{
 	position: relative;
-	margin-bottom: 32px;
 }
 #leftMainDiv{
-	width: 48%;
-	width: 48%;
-	float: left;
-	overflow: hidden;
-	margin-right: 18px;
-	display: block;
+	width: 48.5%;
+  	float: left;
+  	overflow: hidden;
+  	margin-right: 1.5%;
+  	display: block;
 }
 #rightMaindiv{
-	width:48%;
-	display: inline-block;
-	overflow: hidden;
-	padding-top: 5px;
+	width: 50%;
+  	display: inline-block;
+  	overflow: hidden;
+  	float: right;
 }
 /
 /*meduia queris*/
 
 @media(max-width: 1042px) {
-  #leftMainDiv{
+  #leftMainDiv #poststuff{
 	width: 97.5%;
 	margin: 0px auto; 
+	background-color: red;
   }
-  #rightMaindiv{
+  #rightMaindiv #poststuff{
 	width: 97.5%;
 	margin: 0px auto; 
   }

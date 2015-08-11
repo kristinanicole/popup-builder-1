@@ -1,28 +1,22 @@
 <?php
-	global $wpdb;
-
+	
+	//Pagination::getLimit();
 	$pagenum = isset($_GET['pn']) ? (int) $_GET['pn'] : 1;
 
 	$limit = SG_APP_POPUP_TABLE_LIMIT;//;
 	$offset = ($pagenum - 1) * $limit;
-
-	$total = $wpdb->get_var( "SELECT COUNT(id) FROM ". $wpdb->prefix ."sg_promotional_popup" );
+	$total = SGPopup::getTotalRowCount();
 	$num_of_pages = ceil( esc_html($total) / $limit );
 	if ($pagenum>$num_of_pages || $pagenum < 1) {
 		$offset = 0;
 		$pagenum = 1;
 	}
-
-	$st = $wpdb->prepare("SELECT * FROM ". $wpdb->prefix ."sg_promotional_popup ORDER BY id DESC LIMIT %d,%d", $offset, $limit);
-	$entries = $wpdb->get_results($st);
+	$orderBy = 'id DESC';
+	$entries = SGPopup::findAll($orderBy,$limit,$offset);
 ?>
 <div class="wrap">
 	<div class="headersWrapper">
-		<h1>Popups</h1>
-		<div class="creteLinkWrapper">
-		
-			<a id='linkCreate' href='<?php echo admin_url();?>admin.php?page=create-popup'>Create new</a>
-		</div>
+	<h2>Popups <a href="<?php echo admin_url();?>admin.php?page=create-popup" class="add-new-h2">Add New</a></h2>
 		<?php 
 			if(!SG_POPUP_PRO) { ?>
 				<input type="button" class="mainUpdateToPro" value="Upgrade to PRO version" onclick="window.open('<?php echo SG_POPUP_PRO_URL;?>')">
@@ -49,23 +43,16 @@
 		<tbody>
 			<?php if($entries) { ?>			
 			<?php
-				$count = 1;
-				$class = '';
-				foreach( $entries as $entry ) {
-					$class = ( $count % 2 == 0 ) ? ' class="alternate"' : '';
-					$jsonData = json_decode($entry->options, true);
-					$title = $jsonData['title'];
-				?>
-				<tr <?php echo $class; ?>>
-					<td><?php echo esc_html($entry->id); ?></td>
-					<td><?php echo esc_html($title); ?></td>
-					<td><?php echo esc_html($entry->content); ?></td>
-					<td><a href='<?php echo admin_url();?>admin.php?page=create-popup&id=<?php echo esc_html($entry->id);?>'>Edit</a><a href="#" sg-app-popup-id = "<?php echo esc_html($entry->id);?>" class='sgDeleteLink'>Delete</a></td>
+				foreach( $entries as $entry ) { ?>
+					<tr>
+					<td><?php echo esc_html($entry->getId()); ?></td>
+					<td><?php echo esc_html($entry->getTitle()); ?></td>
+					<td><?php echo esc_html($entry->getType()); ?></td>
+					<td><a href='<?php echo admin_url();?>admin.php?page=edit-popup&id=<?php echo esc_html($entry->getId());?>&type=<?php echo esc_html($entry->getType());?>'>Edit</a><a href="#" sg-app-popup-id = "<?php echo esc_html($entry->getId());?>" class='sgDeleteLink'>Delete</a></td>
 				</tr>
-				<?php
-					$count++;
-				}
-				?>
+				<?php }
+				 ?>
+				
 			<?php } else { ?>
 			<tr>
 				<td colspan="2">No popups</td>

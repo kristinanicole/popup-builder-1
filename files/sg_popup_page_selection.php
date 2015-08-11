@@ -4,7 +4,7 @@ function sg_popup_meta()
 	$screens = array( 'post', 'page' );
 	foreach ( $screens as $screen ) 
 	{
-		add_meta_box( 'prfx_meta', __( 'Select Popup', 'prfx-textdomain' ), 'sg_popup_callback', $screen, 'normal' );
+		add_meta_box( 'prfx_meta', __( 'Select popup on page load', 'prfx-textdomain' ), 'sg_popup_callback', $screen, 'normal' );
 	}	
 }
 add_action( 'add_meta_boxes', 'sg_popup_meta' );
@@ -12,8 +12,7 @@ add_action( 'add_meta_boxes', 'sg_popup_meta' );
 /**
  * Outputs the content of the meta box
  */
-function sg_popup_callback( $post )
-{
+function sg_popup_callback($post) {
 	wp_nonce_field( basename( __FILE__ ), 'prfx_nonce' );
 	$prfx_stored_meta = get_post_meta( $post->ID );
 	?>
@@ -21,20 +20,20 @@ function sg_popup_callback( $post )
 <?php 
 		global $wpdb;
 		$proposedTypes = array();
-		$proposedTypes = $wpdb->get_results("SELECT * FROM ". $wpdb->prefix ."sg_promotional_popup ORDER BY id DESC"); 
-		function creaeSelect($options,$name,$selecteOption)
-		{	
+		$orderBy = 'id DESC';
+		$proposedTypes = SGPopup::findAll($orderBy); 
+		function createSelect($options,$name,$selecteOption) {	
 			$selected ='';
 			$str = "";
 			$str .= "<select class='choosePopupType promotionalPopupSelect'  name=$name>";
-			$str .= "<option>Not selected</potion>";
+			$str .= "<option value=''>Not selected</potion>";
 			foreach($options as $option)
 			{
-				if($option->options)
+				if($option)
 				{
-					$jsonData = json_decode($option->options);
-					$title = $jsonData->title;
-					$id = $option->id;
+					$title = $option->getTitle();
+					$type = $option->getType();
+					$id = $option->getId();
 					if($selecteOption == $id)
 					{
 						$selected = "selected";
@@ -43,7 +42,7 @@ function sg_popup_callback( $post )
 					{
 						$selected ='';
 					}
-					$str .= "<option value='".$id."' disable='".$id."' ".$selected." >$title</potion>";
+					$str .= "<option value='".$id."' disable='".$id."' ".$selected." >$title - $type</potion>";
 				}
 			}
 			$str .="</select>" ;
@@ -52,23 +51,20 @@ function sg_popup_callback( $post )
 		global $post;
 		$page = (int)$post->ID;
 		$popup = "sg_promotional_popup";
-		$sql = $wpdb->prepare("SELECT meta_value  FROM ". $wpdb->prefix ."postmeta WHERE post_id = %d AND meta_key =%s",$page,$popup);
-		$row = $wpdb->get_row($sql);
-		$type = (int)$row->meta_value;
-		$prepare = $wpdb->prepare("SELECT * FROM ". $wpdb->prefix ."sg_promotional_popup WHERE id = %d ",$type);
-		$pageSelectionData = $wpdb->get_row($prepare);
-		echo creaeSelect($proposedTypes,'sg_promotional_popup',$type);
-		 $SG_APP_POPUP_URL = SG_APP_POPUP_URL;
+		$popupId = SGPopup::getPagePopupId($page,$popup);
+		echo createSelect($proposedTypes,'sg_promotional_popup',$popupId);
+		$SG_APP_POPUP_URL = SG_APP_POPUP_URL;
 ?>
 	</p>
-	<input type="button" value="Preview"  class="previewbutton" id="previewbuttonStyle" disabled="disabled" /><img src="<?php echo plugins_url('img/wpspin_light.gif', dirname(__FILE__).'../');?>" id="gifLoader" style="display: none;">
-	<input type="hidden" value="<?php echo $page;?>" id="post_id">
+	
 	<input type="hidden" value="<?php echo $SG_APP_POPUP_URL;?>" id="SG_APP_POPUP_URL">
 <?php
 }
-	function slelectPopupSaved($post_id) {
-		update_post_meta($post_id, 'sg_promotional_popup' , $_POST['sg_promotional_popup']);
-	}
-	add_action('save_post','slelectPopupSaved');
+
+function selectPopupSaved($post_id) {
+	if($_POST['sg_promotional_popup'] == '') return;
+		update_post_meta($post_id, 'sg_promotional_popup' , $_POST['sg_promotional_popup']);	 
 	
-	
+}	
+
+add_action('save_post','selectPopupSaved');
