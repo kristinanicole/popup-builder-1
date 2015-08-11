@@ -77,7 +77,7 @@ Go to the Popup Builder settings and set your desired options.
 
 * Version 2.0
 
-	Major release of Popup Builder v2.0
+	Major release of Popup Builder v.2.0
 
 * Version 1.1.4
 
