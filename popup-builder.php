@@ -118,7 +118,7 @@ function sgShowShortCode($args, $content) {
 	wp_enqueue_style('sg_colorbox_theme');
 	if(!$obj) return  $content;
 		sgRenderPopupScript($args['id']);
-		return "<a href='javascript:void()' class='sg-show-popup' sgpopupid=".$args['id'].">".$content."</a>";
+		return "<a href='javascript:void(0)' class='sg-show-popup' sgpopupid=".$args['id'].">".$content."</a>";
 }
 add_shortCode('sg_popup', 'sgShowShortCode');
 
