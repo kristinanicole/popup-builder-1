@@ -40,7 +40,7 @@ function wporg_wpmu_new_blogPopup() {
 	if(SG_POPUP_PRO) PopupProInstaller::install();
 }
 function sg_popup_activate() {
-//	update_option('SG_POPUP_VERSION', SG_POPUP_VERSION); 
+	update_option('SG_POPUP_VERSION', SG_POPUP_VERSION); 
 	PopupInstaller::install();
 	if(SG_POPUP_PRO) PopupProInstaller::install();
 }
@@ -152,6 +152,8 @@ function sg_popup_plugin_loaded() {
     $versionPopup = get_option('SG_POPUP_VERSION');
     if(!$versionPopup || $versionPopup < SG_POPUP_VERSION ) {
     	update_option('SG_POPUP_VERSION', SG_POPUP_VERSION); 
+    	PopupInstaller::install();
+		if(SG_POPUP_PRO) PopupProInstaller::install();
     	PopupInstaller::convert();
     }
 }
