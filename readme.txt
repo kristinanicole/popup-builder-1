@@ -17,6 +17,8 @@ Create powerful popups for promotion. Manage popup dimensions, effects, themes a
 
 Create and manage powerful promotion popups for your WordPress blog or website. Powerful, and yet, easy to use popup plugin that will help you to grab your visitor's attention to introduce him offers, discounts or other kind of promotional notices.
 
+https://www.youtube.com/edit?o=U&video_id=3ZwRKPhHMzY
+
 Popups are a good marketing tool, they're impressively high converting. A web page with a popup typically sees more conversions than the same page without a popup. More important, a page with a well designed and thoughtfully implemented popup converts better than one with an ugly popup. With Popup Builder plugin you can customize the popup according to your needs.
 
 **Features:**
