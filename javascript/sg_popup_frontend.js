@@ -27,7 +27,6 @@ function canOpenPopup(id, openOnce, onLoad) {
 }
 
 function showPopup(id, onLoad) {
-	
 	var data = SG_POPUP_DATA[id];
 
 	var openOnce = optionConvertBool(data['repeatPopup']);;
@@ -42,8 +41,13 @@ function showPopup(id, onLoad) {
 	link.id = "sg_colorbox_theme-css";
 	link.rel = "stylesheet"
 	link.href = popupColorboxUrl;
-	head.appendChild(link);
-	link.onload = function () {
+	document.getElementsByTagName('head')[0].appendChild(link);
+	var img = document.createElement('img');
+    img.onerror = function(){
+        showColorboxWithOptions();
+    }
+    img.src = popupColorboxUrl;
+	function showColorboxWithOptions() {
 
 		setTimeout(function() {
 		
@@ -57,6 +61,7 @@ function showPopup(id, onLoad) {
 			sg_popup_forMobile = optionConvertBool(data['forMobile']);
 			sg_popup_cantClose = optionConvertBool(data['disablePopup']);
 			sg_popup_autoClosePopup = optionConvertBool(data['autoClosePopup']);
+			popupClosingTimer = data['popupClosingTimer'];
 
 			if(sg_popup_cantClose) {
 				sgPopup.cantPopupClose();

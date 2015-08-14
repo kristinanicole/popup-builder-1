@@ -109,13 +109,13 @@ abstract class SGPopup {
 		$obj->setType(notNull($type));
 		$obj->setTitle(notNull($arr['title']));
 		if (@$arr['id']) $obj->setId($arr['id']);
-		$obj->setWidth(notNull($jsonData->width));
-		$obj->setHeight(notNull($jsonData->height));
-		$obj->setDelay(notNull($jsonData->delay));
-		$obj->setEffectDuration(notNull($jsonData->duration));
-		$obj->setEffect(notNull($jsonData->effect));
-		$obj->setInitialWidth(notNull($jsonData->initialWidth));
-		$obj->setInitialHeight(notNull($jsonData->initialHeight));
+		$obj->setWidth(notNull(@$jsonData['width']));
+		$obj->setHeight(notNull(@$jsonData['height']));
+		$obj->setDelay(notNull(@$jsonData['delay']));
+		$obj->setEffectDuration(notNull(@$jsonData['duration']));
+		$obj->setEffect(notNull($jsonData['effect']));
+		$obj->setInitialWidth(notNull(@$jsonData['initialWidth']));
+		$obj->setInitialHeight(notNull(@$jsonData['initialHeight']));
 		$obj->setOptions(notNull($arr['options']));
 
 		if (@$arr['id']) $obj->setCustomOptions($arr['id']);
@@ -175,8 +175,8 @@ abstract class SGPopup {
 			$query .= " LIMIT ".intval($offset).','.intval($limit);
 		}
 
-		$st = $wpdb->prepare($query, array());
-		$popups = $wpdb->get_results($st, ARRAY_A);
+		//$st = $wpdb->prepare($query, array());
+		$popups = $wpdb->get_results($query, ARRAY_A);
 
 		$arr = array();
 		foreach ($popups as $popup) {

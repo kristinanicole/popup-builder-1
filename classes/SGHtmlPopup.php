@@ -10,14 +10,14 @@ class SGHtmlPopup extends SGPopup {
 	public function getContent() {
 		return $this->content;
 	}
-	public static function create($data) {
+	public static function create($data, $obj = null) {
 		$obj = new self();
-
+		
 		$obj->setContent($data['html']);
 
 		return parent::create($data, $obj);
 	}
-	public function save() {
+	public function save($data = array()) {
 
 		$editMode = $this->getId()?true:false;
 		

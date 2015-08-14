@@ -1,4 +1,8 @@
 /*new styles*/
+#wpwrap {
+	overflow: hidden;
+	margin-right: 1px;
+}
 #general .postbox-container,#effect .postbox-container, #dimentions .postbox-container,#options .postbox-container,#sepectialOptons .postbox-container,#proOptions .postbox-container{
 	width: 100%;
 }
@@ -41,6 +45,8 @@ h3.hndle .ui-sortable-handle .generalTitle {
 	color: #3879D9;
 	font: 14px Arial;
 	padding-left: 3px;
+	width: 200px;
+	position: fixed;
 	border: 1px solid #ccc;
 	position: absolute;
 	min-width: 20px;
@@ -50,7 +56,7 @@ h3.hndle .ui-sortable-handle .generalTitle {
 	margin-left: 12px;
 	box-shadow: 0px 0px 2px #ccc;
 	padding: 5px;
-	z-index: 9999;
+	z-index: 99999999999999999999999999;
 	background-color: white;
 }
 .errorInfo {
@@ -142,10 +148,7 @@ h3.hndle .ui-sortable-handle .generalTitle {
 	cursor: pointer;
 	margin-right: 2.5%;
 }
-.effectsContent .samefontStyle{
-	max-width: 131px;
-	
-}
+
 .sgDeleteLink{
 	margin-left: 10px;
 }
@@ -604,7 +607,7 @@ input[name="theme"]{
 }
 .wp-picker-open+.wp-picker-input-wrap {
 	float: right;
-	margin-top: 10px;
+	margin-top: 12px;
 }
 .countrisConfigDiv {
 	width: 100%;
@@ -721,14 +724,12 @@ input[name="theme"]{
 #leftMainDiv{
 	width: 48.5%;
   	float: left;
-  	overflow: hidden;
   	margin-right: 1.5%;
   	display: block;
 }
 #rightMaindiv{
 	width: 50%;
   	display: inline-block;
-  	overflow: hidden;
   	float: right;
 }
 /

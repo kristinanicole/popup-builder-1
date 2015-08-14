@@ -22,5 +22,9 @@
 			<div class="popupsDiv videoPopup">
 			</div>
 		</a>
+		<a class="createPopupLink" href="<?php echo SG_APP_POPUP_ADMIN_URL?>admin.php?page=edit-popup&type=ageRestriction">
+			<div class="popupsDiv ageRestriction">
+			</div>
+		</a>
 	<?php } ?>
 </div>

@@ -10,7 +10,7 @@ class SGImagePopup extends SGPopup {
 	public function getUrl() {
 		return $this->url;
 	}
-	public static function create($data) {
+	public static function create($data, $obj = null) {
 		$obj = new self();
 		
 		$obj->setUrl($data['image']);
@@ -18,7 +18,7 @@ class SGImagePopup extends SGPopup {
 		parent::create($data, $obj);
 	}
 
-	public function save() {
+	public function save($data = array()) {
 		
 		$editMode = $this->getId()?true:false;
 
@@ -52,8 +52,3 @@ class SGImagePopup extends SGPopup {
 		return parent::render();
 	}
 }
-//$data = array('id'=>'49','type'=>'Image','html'=>'','image'=>'fffdd','iframe'=>'','shortCode'=>'','options'=>'{"title":"dddd","width":"300","height":"200","delay":0,"duration":1,"effect":"No effect","escKey":"on","scale":"","scrolling":"on","reposition":"on","overlayClose":"on","opacity":"0.8","popupFixed":"","fixedPostion":"","maxWidth":"","maxHeight":"","initialWidth":"300","initialHeight":"100","closeButton":"on","theme":"colorbox1.css","onScrolling":"","forMobile":"","repeatPopup":"on","countryStataus":"","countryIso":"","countryName":"","allowCountris":"allow"}');
-//echo ImagePopup::create($data);
-/*$popup = Popup::findById(49);
-$popup->setUrl('1234');
-$popup->save();*/

@@ -56,8 +56,11 @@ function savePopupFrom() {
 	$array['disablePopup'] = setOptionvalue('disablePopup');
 	$array['autoClosePopup'] = setOptionvalue('autoClosePopup');
 	$array['popupClosingTimer'] = setOptionvalue('popupClosingTimer');
+	$array['yesButtonLabel'] = setOptionvalue('yesButtonLabel');
+	$array['noButtonLabel'] = setOptionvalue('noButtonLabel');
 
 	$html = stripslashes(setOptionvalue("sg_popup_html"));
+	$ageRestriction = setOptionvalue('sg_ageRestriction');
 	$image = setOptionvalue('ad_image');
 	$iframe = setOptionvalue('iframe');
 	$video = setOptionvalue('video');
@@ -66,10 +69,10 @@ function savePopupFrom() {
 	$title = setOptionvalue('title');
 	$id = setOptionvalue('hidden_popup_number');
 	$jsonDataArray = json_encode($array);
-	$data = array('id'=>$id,'title'=>$title,'type'=>$type,'image'=>$image,'html'=>$html,'iframe'=>$iframe,'video'=>$video,'shortcode'=>$shortCode,'options'=>$jsonDataArray);
+	$data = array('id'=>$id,'title'=>$title,'type'=>$type,'image'=>$image,'html'=>$html,'iframe'=>$iframe,'video'=>$video,'shortcode'=>$shortCode,'ageRestriction'=>$ageRestriction,'options'=>$jsonDataArray);
 	$popupName = "SG".ucfirst(strtolower($_POST['type']));
 	$popupClassName = $popupName."Popup";
-
+	
 	require_once(SG_APP_POPUP_PATH ."/classes/".$popupClassName.".php");
 
 	if($id == "") {

@@ -3,7 +3,7 @@
  * Plugin Name: Popup Builder
  * Plugin URI: http://sygnoos.com
  * Description: Create and manage powerful promotion popups for your WordPress blog or website. It's completely free and all features are available.
- * Version: 2.0
+ * Version: 2.0.1
  * Author: Sygnoos
  * Author URI: http://www.sygnoos.com
  * License: GPLv2
@@ -22,6 +22,15 @@ define('SG_POPUP_VERSION', 2.0);
 define('SG_POPUP_PRO', 0);
 define('SG_POPUP_PRO_URL', 'http://sygnoos.com/wordpress-popup/');
 
+$POPUP_TITLES = array(
+	'image' => 'Image',
+	'html' => 'HTML',
+	'iframe' => 'Iframe',
+	'video' => 'Video',
+	'shortcode' => 'Shortcode',
+	'ageRestriction' => 'Age Restriction'
+);
+
 require_once( SG_APP_POPUP_CLASSES .'/SGPopup.php'); 
 require_once( SG_APP_POPUP_CLASSES .'/PopupInstaller.php'); //cretae tables
 if(SG_POPUP_PRO) require_once( SG_APP_POPUP_CLASSES .'/PopupProInstaller.php'); //uninstall tables
@@ -31,6 +40,7 @@ require_once( SG_APP_POPUP_FILES .'/sg_popup_page_selection.php' );  // include 
 
 register_activation_hook(__FILE__, 'sg_popup_activate');
 register_uninstall_hook(__FILE__, 'sg_popup_deactivate');
+//register_deactivation_hook(__FILE__, 'sg_popup_deactivate');
 
 
 add_action('wpmu_new_blog', 'wporg_wpmu_new_blogPopup', 10, 6 );
@@ -46,7 +56,7 @@ function sg_popup_activate() {
 }
 
 function sg_popup_deactivate() {
-	delete_option('SG_POPUP_VERSION');
+	delete_option('SG_POPUP_VERSION');	
 	PopupInstaller::uninstall();
 	if(SG_POPUP_PRO) PopupProInstaller::uninstall();
 }
@@ -114,7 +124,7 @@ function sgFindPopupData($id) {
 
 function sgShowShortCode($args, $content) {
 	$obj = SGPopup::findById($args['id']);
-	wp_register_style('sg_colorbox_theme', SG_APP_POPUP_URL . "/style/sgcolorbox/".$options['theme']."");
+	wp_register_style('sg_colorbox_theme', SG_APP_POPUP_URL . "/style/sgcolorbox/".@$options['theme']."");
 	wp_enqueue_style('sg_colorbox_theme');
 	if(!$obj) return  $content;
 		sgRenderPopupScript($args['id']);
@@ -152,8 +162,6 @@ function sg_popup_plugin_loaded() {
     $versionPopup = get_option('SG_POPUP_VERSION');
     if(!$versionPopup || $versionPopup < SG_POPUP_VERSION ) {
     	update_option('SG_POPUP_VERSION', SG_POPUP_VERSION); 
-    	PopupInstaller::install();
-		if(SG_POPUP_PRO) PopupProInstaller::install();
     	PopupInstaller::convert();
     }
 }

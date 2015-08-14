@@ -4,7 +4,7 @@
 	if (!$popupType) {
 		$popupType = 'html';
 	}
-	if(isset($_GET[id])) {
+	if(isset($_GET['id'])) {
 		$id = (int)$_GET['id'];
 		$popupName = "SG".ucfirst(strtolower($popupType));
 		$popupClassName = $popupName."Popup";
@@ -146,6 +146,7 @@
 				return $str;
 		}
 		else {
+			@$popup_style_name = ($popup_style_name) ? $popup_style_name : '';
 			$str .= "<select name=$name id='sameWidthinputs' class=$popup_style_name >";
 			foreach($options as $key=>$option) {	
 				if($key == $selecteOption) {
@@ -199,7 +200,7 @@
 		<div class="generalWrapper">
 		<div id="titlediv">
 			<div id="titlewrap">
-				<input style="margin-top: 5px;" type="text" name="title" size="30" value="<?php echo esc_attr($title)?>" id="title" spellcheck="true" autocomplete="off" required = "required"  placeholder='Enter title here'>
+				<input style="margin-top: 5px;" type="text" name="title" size="30" value="<?php echo esc_attr(@$title)?>" id="title" spellcheck="true" autocomplete="off" required = "required"  placeholder='Enter title here'>
 			</div>
 		</div>
 			<div id="leftMainDiv">
@@ -214,7 +215,7 @@
 										<?php require_once("main_".$popupType."_section.php");?>
 										<input type="hidden" name="type" value="<?php echo $popupType;?>">
 										<span class="createDescribe" id="themeSPan">Popup theme:</span>
-										<?php echo creaeSelect($sg_popup_theme,'theme',esc_html($sgTheme));?><div class="theme1" id="displayNone"></div><div class="theme2" id="displayNone"></div><div class="theme3" id="displayNone" ></div><div class="theme4" id="displayNone" ></div><div class="theme5" id="displayNone"></div>
+										<?php echo creaeSelect($sg_popup_theme,'theme',esc_html(@$sgTheme));?><div class="theme1" id="displayNone"></div><div class="theme2" id="displayNone"></div><div class="theme3" id="displayNone" ></div><div class="theme4" id="displayNone" ></div><div class="theme5" id="displayNone"></div>
 									</div>
 								</div>
 
@@ -231,7 +232,7 @@
 									<h3 class="hndle ui-sortable-handle effectTitle" style="cursor: pointer"><span>Effects</span></h3>
 									<div class="effectsContent">
 										<span class="createDescribe">Effect type:</span>
-										<?php echo creaeSelect($sg_popup_effects,'effect',esc_html($effect));?>
+										<?php echo creaeSelect($sg_popup_effects,'effect',esc_html(@$effect));?>
 										<div class="effectWrapper"><div id="effectShow" ></div></div>
 										
 										<span  class="createDescribe">Effect duration:</span>
@@ -267,7 +268,7 @@
 											<span  class="createDescribe">Max width:</span>
 											<input class='sameWidthinputs' type="text" name="maxWidth" value="<?php echo esc_attr($sgMaxWidth);?>"  pattern = "\d+(([px]+|\%)|)" title="It's must be number  + px or %" /><img class='errorInfo' src="<?php echo plugins_url('img/info-error.png', dirname(__FILE__).'../') ?>"><span class="validateError">It must be a number + px or %</span><br>
 											<span  class="createDescribe">Max height:</span>
-											<input class='sameWidthinputs' type="text" name="maxHeight" value="<?php echo esc_attr($sgMaxHeight);?>"   pattern = "\d+(([px]+|\%)|)" title="It's must be number  + px or %" /><img class='errorInfo' src="<?php echo plugins_url('img/info-error.png', dirname(__FILE__).'../') ?>"><span class="validateError">It must be a number + px or %</span><br>
+											<input class='sameWidthinputs' type="text" name="maxHeight" value="<?php echo esc_attr(@$sgMaxHeight);?>"   pattern = "\d+(([px]+|\%)|)" title="It's must be number  + px or %" /><img class='errorInfo' src="<?php echo plugins_url('img/info-error.png', dirname(__FILE__).'../') ?>"><span class="validateError">It must be a number + px or %</span><br>
 											<span  class="createDescribe">Initial width:</span>
 											<input class='sameWidthinputs' type="text" name="initialWidth" value="<?php echo esc_attr($sgInitialWidth);?>"  pattern = "\d+(([px]+|\%)|)" title="It's must be number  + px or %" /><img class='errorInfo' src="<?php echo plugins_url('img/info-error.png', dirname(__FILE__).'../') ?>"><span class="validateError">It must be a number + px or %</span><br>
 											<span  class="createDescribe">Initial height:</span>
@@ -287,42 +288,32 @@
 										<div class="handlediv optionsTitle" title="Click to toggle"><br></div>
 										<h3 class="hndle ui-sortable-handle optionsTitle" style="cursor: pointer"><span>Options</span></h3>
 										<div class="optionsContent">
-											<span class="createDescribe">Dismiss on &quot;esc&quot; key:</span>
-											<input class='sameWidthinputs' type="checkbox" name="escKey"  <?php echo $sgEscKey;?>/>
+											<span class="createDescribe">Dismiss on &quot;esc&quot; key:</span><input class='sameWidthinputs' type="checkbox" name="escKey"  <?php echo $sgEscKey;?>/>
 											<span class="dashicons dashicons-info escKeyImg sameImageStyle"></span><span class="infoEscKey samefontStyle">The popup will be dismissed when user presses on 'esc' key.</span></br>
 											
-											<span class="createDescribe" id="createDescribeClose">Show &quot;close&quot; button:</span>
-											<input class='sameWidthinputs' type="checkbox" name="closeButton" <?php echo $sgCloseButton;?> />
+											<span class="createDescribe" id="createDescribeClose">Show &quot;close&quot; button:</span><input class='sameWidthinputs' type="checkbox" name="closeButton" <?php echo $sgCloseButton;?> />
 											<span class="dashicons dashicons-info CloseImg sameImageStyle"></span><span class="infoCloseButton samefontStyle">The popup will contain 'close' button.</span><br>
 											
-											<span class="createDescribe">Enable content scrolling:</span>
-											<input class='sameWidthinputs' type="checkbox" name="scrolling" <?php echo $sgScrolling;?> />
+											<span class="createDescribe">Enable content scrolling:</span><input class='sameWidthinputs' type="checkbox" name="scrolling" <?php echo $sgScrolling;?> />
 											<span class="dashicons dashicons-info scrollingImg sameImageStyle"></span><span class="infoScrolling samefontStyle">If the containt is larger then the specified dimentions, then the content will be scrollable.</span><br>
 											
-											<span class="createDescribe">Enable responsiveness:</span>
-											<input class='sameWidthinputs' type="checkbox" name="reposition" <?php echo $sgReposition;?> />
+											<span class="createDescribe">Enable responsiveness:</span><input class='sameWidthinputs' type="checkbox" name="reposition" <?php echo $sgReposition;?> />
 											<span class="dashicons dashicons-info repositionImg sameImageStyle"></span><span class="infoReposition samefontStyle">The popup will be resized/repositioned automatically when window is being resized.</span><br>
 											
-											<span class="createDescribe">Dissmiss on overlay click:</span> 
-											<input class='sameWidthinputs' type="checkbox" name="overlayClose" <?php echo $sgOverlayClose;?> />
+											<span class="createDescribe">Dissmiss on overlay click:</span><input class='sameWidthinputs' type="checkbox" name="overlayClose" <?php echo $sgOverlayClose;?> />
 											<span class="dashicons dashicons-info overlayImg sameImageStyle"></span><span class="infoOverlayClose samefontStyle">The popup will be dismissed when user clicks beyond of the popup area.</span><br>
 											
-											<span class="createDescribe">Dissmiss on content click:</span> 
-											<input class='sameWidthinputs' type="checkbox" name="contentClick" <?php echo $sgContentClick;?> />
+											<span class="createDescribe">Dissmiss on content click:</span><input class='sameWidthinputs' type="checkbox" name="contentClick" <?php echo $sgContentClick;?> />
 											<span class="dashicons dashicons-info contentClick sameImageStyle"></span><span class="infoContentClick samefontStyle">The popup will be dismissed when user clicks inside popup area.</span><br>
 											
-											<span class="createDescribe">Change overlay color:</span> 
-											<div id="colorPiccer"><input  class="sgOverlayColor" id="sgOverlayColor" type="text" name="sgOverlayColor" value="<?php echo esc_attr($sgOverlayColor); ?>" /></div>
-											<br>
+											<span class="createDescribe">Change overlay color:</span><div id="colorPiccer"><input  class="sgOverlayColor" id="sgOverlayColor" type="text" name="sgOverlayColor" value="<?php echo esc_attr(@$sgOverlayColor); ?>" /></div><br>
 
-											<span class="createDescribe" id="createDescribeOpacitcy">Background overlay opacity:</span>
-											<div class="slider-wrapper">
+											<span class="createDescribe" id="createDescribeOpacitcy">Background overlay opacity:</span><div class="slider-wrapper">
 												<input type="text" class="js-decimal" value="<?php echo esc_attr($sgOpacity);?>" rel="<?php echo esc_attr($sgOpacity);?>" name="opacity"/>
 												<div id="js-display-decimal" class="display-box"></div>
 											</div><br>								
 											
-											<span  class="createDescribe" id="createDescribeFixed">Popup location:</span>
-											<input class='sameWidthinputs' type="checkbox" name="popupFixed" id="popupFixed" <?php echo $sgPopupFixed;?> /><br>
+											<span  class="createDescribe" id="createDescribeFixed">Popup location:</span><input class='sameWidthinputs' type="checkbox" name="popupFixed" id="popupFixed" <?php echo $sgPopupFixed;?> /><br>
 											<div class="popopFixeds">
 												<span class="forFixWrapperStyle" >&nbsp;</span> 
 												<div class="fixedWrapper"  >
@@ -337,7 +328,7 @@
 													<div class="fixedPositionStyle" id="fixedPosition9" data-sgvalue="9"></div>
 												</div>
 											</div>
-											<input type="hidden" name="fixedPostion" class="fixedPostion" value="<?php echo esc_attr($sgFixedPostion);?>">
+											<input type="hidden" name="fixedPostion" class="fixedPostion" value="<?php echo esc_attr(@$sgFixedPostion);?>">
 										</div>
 									</div>
 
@@ -353,7 +344,7 @@
 				</div>
 				</div>
 				<div class="clear"></div>
-				<input type="hidden" class="button-primary" value="<?php echo esc_attr($id);?>" name="hidden_popup_number" />
+				<input type="hidden" class="button-primary" value="<?php echo esc_attr(@$id);?>" name="hidden_popup_number" />
 			</div>	
 		</div>
 </form>

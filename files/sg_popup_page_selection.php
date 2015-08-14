@@ -62,8 +62,14 @@ function sg_popup_callback($post) {
 }
 
 function selectPopupSaved($post_id) {
-	if($_POST['sg_promotional_popup'] == '') return;
-		update_post_meta($post_id, 'sg_promotional_popup' , $_POST['sg_promotional_popup']);	 
+	if($_POST['sg_promotional_popup'] == '') {
+			delete_post_meta($post_id, 'sg_promotional_popup');
+			return false;
+		}
+		else {
+			update_post_meta($post_id, 'sg_promotional_popup' , $_POST['sg_promotional_popup']);	
+		}
+		 
 	
 }	
 
